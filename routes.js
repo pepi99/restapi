@@ -1,4 +1,5 @@
 const ProductsController = require('./controllers/ProductsController')
+const AuthenticateController = require('./controllers/AuthenticationController')
 module.exports = (app) => {
     app.get('/getProduct',
         ProductsController.get)
@@ -10,4 +11,6 @@ module.exports = (app) => {
         ProductsController.delete)
     app.patch('/updateProduct',
         ProductsController.patch)
+    app.get('/authenticate',
+        AuthenticateController.authenticate)
 }
