@@ -1,6 +1,6 @@
 module.exports = {
     database: {
-        uri: 'mongodb://localhost/db',
+        uri: 'mongodb://localhost/database',
         options: {
             useNewUrlParser: true,
             useUnifiedTopology: true,
