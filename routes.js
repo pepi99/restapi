@@ -1,13 +1,13 @@
 const ProductsController = require('./controllers/ProductsController')
 module.exports = (app) => {
-    app.get('/products',
+    app.get('/getProduct',
         ProductsController.get)
-    app.get('/products/all',
+    app.get('/getProducts',
         ProductsController.getAll)
-    app.post('/products',
+    app.post('/addNewProduct',
         ProductsController.post)
-    app.delete('/products',
+    app.delete('/deleteProduct',
         ProductsController.delete)
-    app.patch('/products',
+    app.patch('/updateProduct',
         ProductsController.patch)
 }

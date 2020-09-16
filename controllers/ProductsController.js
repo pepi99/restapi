@@ -1,7 +1,13 @@
 const Product = require('../models/Product')
+const ProductUtil = require('../util/ProductUtil')
 module.exports = {
     async getAll(req, res) {
-        const products = await Product.find()
+        console.log('Kur')
+        let products = await Product.find()
+        console.log(products);
+        products.forEach(function(part, index, theArray) {
+            theArray[index] = ProductUtil.parseProduct(theArray[index])
+        })
         res.send(products)
     },
     async post(req, res) {
@@ -22,7 +28,8 @@ module.exports = {
     },
     async get(req, res) {
         try {
-            const product = await Product.findOne({name: req.body.name})
+            let product = await Product.findOne({name: req.body.name})
+            product = ProductUtil.parseProduct(product)
             if (product)
                 res.send(product)
             else
