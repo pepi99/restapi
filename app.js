@@ -6,11 +6,14 @@ const mongoose = require('mongoose')
 const dbConfig = require('./config/database')
 const bodyParser = require('body-parser')
 const app = express()
+const cookieParser = require('cookie-parser')
 
+app.use(cookieParser())
 app.use(cors())
 app.use(morgan('combined'))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({extended: false}))
+
 
 mongoose.connect(dbConfig.database.uri, dbConfig.database.options)
 

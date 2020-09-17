@@ -1,14 +1,34 @@
 const Product = require('../models/Product')
 const ProductUtil = require('../util/ProductUtil')
+const VATUtil = require('../util/VATUtil')
+const request = require('request');
 module.exports = {
     async getAll(req, res) {
-        console.log('Kur')
-        let products = await Product.find()
-        console.log(products);
-        products.forEach(function(part, index, theArray) {
-            theArray[index] = ProductUtil.parseProduct(theArray[index])
+        let originalRes = res
+        request('https://euvatrates.com/rates.json', {json: true}, (err, res, body) => {
+            if (err) {
+                res.send({
+                    error: 'Can not connect to api'
+                })
+            } else {
+                let apiRes = res
+                request('https://ipinfo.io', {json: true}, async (err, res, body) => {
+
+                    let country = res.body.country
+                    let vat = apiRes.body.rates[country].standard_rate
+                    console.log(vat)
+
+                    let products = await Product.find()
+                    products.forEach(function (part, index, theArray) {
+                            theArray[index] = ProductUtil.parseProduct(theArray[index])
+                            theArray[index].price = VATUtil.calculatePrice(theArray[index].price, vat)
+                        }
+                    )
+                    originalRes.send(products)
+                })
+
+            }
         })
-        res.send(products)
     },
     async post(req, res) {
         try {
@@ -36,7 +56,7 @@ module.exports = {
                 res.send({
                     message: 'No such product'
                 })
-        } catch(err) {
+        } catch (err) {
             res.status(500).send({
                 error: 'Error when getting product'
             })
@@ -61,7 +81,7 @@ module.exports = {
             res.send({
                 message: 'updated product'
             })
-        } catch(err) {
+        } catch (err) {
             res.status(500).send({
                 error: 'error while editing product'
             })
