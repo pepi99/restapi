@@ -1,16 +1,22 @@
 const ProductsController = require('./controllers/ProductsController')
+const OrdersController = require('./controllers/OrdersController')
 const AuthenticateController = require('./controllers/AuthenticationController')
+
 module.exports = (app) => {
-    app.get('/getProduct', AuthenticateController.checkToken,
-        ProductsController.get)
     app.get('/getProducts',
         ProductsController.getAll)
     app.post('/addNewProduct', AuthenticateController.checkToken,
         ProductsController.post)
-    app.delete('/deleteProduct', AuthenticateController.checkToken,
+    app.delete('/deleteProduct/:productId', AuthenticateController.checkToken,
         ProductsController.delete)
-    app.patch('/updateProduct', AuthenticateController.checkToken,
+    app.patch('/updateProduct/:productId', AuthenticateController.checkToken,
         ProductsController.patch)
     app.get('/authenticate',
         AuthenticateController.authenticate)
+    app.post('/addNewOrder', AuthenticateController.checkToken,
+        OrdersController.post)
+    app.patch('/updateOrder/:orderId', AuthenticateController.checkToken,
+        OrdersController.patch)
+    app.get('/getOrders', AuthenticateController.checkToken,
+        OrdersController.getOrders)
 }
