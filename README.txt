@@ -7,6 +7,14 @@ How to Start:
 =============
 node app.js
 
+How to authenticate: / POST
+    - url: localhost:$port/authenticate
+    - body: {"username": "username", "password": "password"} // this is the hardcoded user
+    - a JWT token is generated and returned to the user and automatically set as a cookie
+    - every request to the API now sets the authorization header to the jwt token stored in the cookie
+    - authentication is not needed only for getting all products.
+    - API can now be used, description is below.
+
 API Description:
 ================
 
