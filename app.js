@@ -19,6 +19,8 @@ mongoose.connect(dbConfig.database.uri, dbConfig.database.options)
 
 require('./routes')(app)
 
+prepopulator.removeProducts().then()
+prepopulator.removeOrders().then()
 prepopulator.prepopulate().then() // just not to ignore Promise
 
 app.listen(portConfig.port, () => {

@@ -1,3 +1,7 @@
+/**
+ * File that prepopulates the db with data (categories, products, orders) and
+ * can delete them.
+ */
 const Product = require('./models/Product')
 const Order = require('./models/Order')
 module.exports = {
@@ -53,5 +57,17 @@ module.exports = {
         await this.prepopulateWithProducts();
         await this.prepopulateWithOrders();
 
+    },
+    async removeProducts() {
+        Product.deleteMany({}, function (err) {
+            if(err)
+                console.log(err)
+        })
+    },
+    async removeOrders() {
+        Order.deleteMany({}, function (err) {
+            if(err)
+                console.log(err)
+        })
     }
 }
