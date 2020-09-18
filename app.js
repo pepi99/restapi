@@ -19,9 +19,9 @@ mongoose.connect(dbConfig.database.uri, dbConfig.database.options)
 
 require('./routes')(app)
 
-prepopulator.removeProducts().then()
-prepopulator.removeOrders().then()
-prepopulator.prepopulate().then() // just not to ignore Promise
+prepopulator.removeProducts().then() // Clears all the products from the DB after backend is run (Delete if not required
+prepopulator.removeOrders().then() // Same logic for orders
+prepopulator.prepopulate().then() // Populates db with some dummy data as required in the task.
 
 app.listen(portConfig.port, () => {
     console.log('Server is listening')

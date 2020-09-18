@@ -8,6 +8,6 @@ const Product = new Schema({
     price: Number
 })
 
-Product.plugin(AutoIncrement, {inc_field: 'id'})
+Product.plugin(AutoIncrement, {inc_field: 'id'}) // Increase id of each next product.
 module.exports = mongoose.model('Product', Product)
 

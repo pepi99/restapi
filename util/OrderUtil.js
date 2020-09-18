@@ -1,4 +1,9 @@
 module.exports = {
+    /**
+     * Readable version of order.
+     * @param order
+     * @returns {{date: string, id: *, products: number[], status: *}}
+     */
     parseOrder(order) {
         return {
             id: order.idOrder,

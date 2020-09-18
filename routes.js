@@ -1,3 +1,7 @@
+/**
+ * Router - redirects endpoint requests to be handled by different controllers.
+ */
+
 const ProductsController = require('./controllers/ProductsController')
 const OrdersController = require('./controllers/OrdersController')
 const AuthenticateController = require('./controllers/AuthenticationController')

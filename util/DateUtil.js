@@ -1,4 +1,8 @@
 module.exports = {
+    /**
+     *
+     * @returns Date
+     */
     getDate() {
         let today = new Date();
         let day = String(today.getDate()).padStart(2, '0');

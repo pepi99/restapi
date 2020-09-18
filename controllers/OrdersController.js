@@ -2,6 +2,12 @@ const Order = require('../models/Order')
 const DateUtil = require('../util/DateUtil')
 const OrderUtil = require('../util/OrderUtil')
 module.exports = {
+    /**
+     * Retrieve orders.
+     * @param req
+     * @param res
+     * @returns {Promise<void>}
+     */
     async getOrders(req, res) {
         let orders = await Order.find()
         console.log(orders)
@@ -10,6 +16,12 @@ module.exports = {
         })
         res.send(orders)
     },
+    /**
+     * Add new Order.
+     * @param req
+     * @param res
+     * @returns {Promise<void>}
+     */
     async post(req, res) {
         try {
             let data = req.body
@@ -32,6 +44,12 @@ module.exports = {
             })
         }
     },
+    /**
+     * Update order by order id.
+     * @param req
+     * @param res
+     * @returns {Promise<void>}
+     */
     async patch(req, res) {
         try {
             await Order.findOneAndUpdate({idOrder: req.params.orderId}, {$set: {status: req.body.status}})

@@ -8,6 +8,6 @@ const Order = new Schema({
     status: String
 })
 
-Order.plugin(AutoIncrement, {inc_field: 'idOrder'})
+Order.plugin(AutoIncrement, {inc_field: 'idOrder'}) // Increase id of each next order.
 module.exports = mongoose.model('Order', Order)
 
