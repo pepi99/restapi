@@ -54,9 +54,9 @@ module.exports = {
     },
     async delete(req, res) {
         try {
-            await Product.deleteOne({name: req.params.productId})
+            await Product.deleteOne({name: req.params.productName})
             res.send({
-                message: 'Deleted product ' + req.params.productId
+                message: 'Deleted product ' + req.params.productName
             })
         } catch (err) {
             res.status(500).send({
@@ -66,7 +66,7 @@ module.exports = {
     },
     async patch(req, res) {
         try {
-            await Product.findOneAndUpdate({name: req.params.productId}, req.body)
+            await Product.findOneAndUpdate({name: req.params.productName}, req.body)
             res.send({
                 message: 'updated product'
             })

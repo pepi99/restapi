@@ -7,9 +7,9 @@ module.exports = (app) => {
         ProductsController.getAll)
     app.post('/addNewProduct', AuthenticateController.checkToken,
         ProductsController.post)
-    app.delete('/deleteProduct/:productId', AuthenticateController.checkToken,
+    app.delete('/deleteProduct/:productName', AuthenticateController.checkToken,
         ProductsController.delete)
-    app.patch('/updateProduct/:productId', AuthenticateController.checkToken,
+    app.patch('/updateProduct/:productName', AuthenticateController.checkToken,
         ProductsController.patch)
     app.get('/authenticate',
         AuthenticateController.authenticate)
