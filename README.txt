@@ -3,6 +3,10 @@ This is a solution to the assignment REST API Task by Petar Ulev.
 MongoDB is used for data storage. If installed on Ubuntu (or any Linux distro),
 Mongo should be started with the command sudo systemctl start mongod.
 
+How to Start:
+=============
+node app.js
+
 API Description:
 ================
 
@@ -12,9 +16,9 @@ API Description:
 - Get products: / GET
     - url: localhost:$port/getProducts
 - Delete product: / DELETE
-    - localhost:$port/deleteProduct/$productId
+    - localhost:$port/deleteProduct/$productName
 - Update a product: / PATCH
-    - url: localhost:$port/updateProduct/productId
+    - url: localhost:$port/updateProduct/$productName
     - body: {name: ..., category: ..., price: ...}
 
 NOTES!
