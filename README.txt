@@ -19,14 +19,14 @@ API Description:
 ================
 
 - Add a product: / POST
-    - url: localhost:$port/addNewProduct
+    - url: localhost:$port/products
     - body: {name: ..., category: ..., price: ...}
 - Get products: / GET
-    - url: localhost:$port/getProducts
+    - url: localhost:$port/products
 - Delete product: / DELETE
-    - localhost:$port/deleteProduct/$productName
+    - localhost:$port/products/$productName
 - Update a product: / PATCH
-    - url: localhost:$port/updateProduct/$productName
+    - url: localhost:$port/products/$productName
     - body: {name: ..., category: ..., price: ...}
 
 NOTES!
@@ -35,5 +35,5 @@ with some dummy data (can be seen in prepopulator.js). You stop deleting or prep
 
 - I have obtained the country code from an API called ipinfo (https://ipinfo.io). I have not
 done this by decoding JWT token as specified in the assignment (I don't see how
-a JWT token could store any information user location, while it has nothing to do
+a JWT token could store any information about user location, while it has nothing to do
 with it).
